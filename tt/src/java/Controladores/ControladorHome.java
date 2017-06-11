@@ -48,6 +48,8 @@ public class ControladorHome {
 
             List<String> imagenesMasGustados = new ArrayList<>();
             List<String> librosMasGustados = new ArrayList<>();
+            
+            List<String> idLibro = new ArrayList<>();
 
             String idioma = locale.getLanguage();
             System.out.println("**IDIOMA ** " + idioma);
@@ -79,6 +81,7 @@ public class ControladorHome {
                 if (img != null) {
                     imagenesMasGustados.add(new String(img, "UTF-8"));
                     librosMasGustados.add(actual.getNombre());
+                    idLibro.add(String.valueOf(actual.getIdLibro()));
                 }
                 System.out.println("---_RUTA " + actual.getPortada());
             }
@@ -92,6 +95,7 @@ public class ControladorHome {
             myModel.put("listaImagenesMasGustados", imagenesMasGustados);
             myModel.put("listaTitulosMasGustados", librosMasGustados);
             
+            myModel.put("idLibros", idLibro);
 
             // myModel.put("profesores", this.ProfesorManager.getProfesores());
             return new ModelAndView("home", "model", myModel);

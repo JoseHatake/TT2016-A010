@@ -134,9 +134,8 @@
 
             <div id="test3" class="blue-grey lighten-5" >
                 <c:forEach items="${model.listaImagenesMasGustados}" var="imagen" varStatus="loop">
-
-                    <a class="" href=""><img src="data:image/jpeg;base64,${imagen}" alt="" class="icons" ></a>                                      
-                    </c:forEach>
+                    <a class="" href="perfildellibro.jsp?idLibro=${model.idLibros}"><img src="data:image/jpeg;base64,${imagen}" alt="" class="icons" ></a>                                      
+                </c:forEach>
                 <br><br>            
             </div>
             <footer class="page-footer orange">
