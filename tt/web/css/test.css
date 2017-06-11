@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9/06/2017, 12:24:29 AM
+    Author     : Lock
+*/
+
+#clickableIcon {
+     cursor: pointer
+}
+#rcorners1 {
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    width: 200px;
+    height: 20px;    
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

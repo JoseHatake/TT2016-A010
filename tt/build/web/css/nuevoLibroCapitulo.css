@@ -1,0 +1,63 @@
+.BarrioFont{
+    font-family: 'Barrio', cursive;
+
+}
+.fontSize3{
+    font-size: 3em;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    margin-top: -0%;
+    margin-left: 2%;
+}
+
+.fontSize2{
+    font-size: 2em;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    margin-top: -0%;
+    margin-left: 2%;
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+}
+
+
+.backgroundAmber { 
+    background-color: #ffc107;
+    color: red;
+    font-family: 'Barrio', cursive;
+    font-size: 2em;
+}
+.backgroundAmber:hover { 
+    background-color: #ffc107;
+    color: white;
+    font-family: 'Barrio', cursive;
+    font-size: 2em;
+}
+
+.line-separator{
+
+    height:1px;
+
+    background:#717171;
+
+    border-bottom:1px solid #313030;
+    margin-top: 2%;
+
+}
+.thumb{
+    height: 300px;           
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+.cuadroCard{
+    margin-left: 1.5%; 
+    background: #eceff1;
+}
