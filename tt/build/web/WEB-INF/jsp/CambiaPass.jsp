@@ -72,40 +72,36 @@
 
 
         <footer class="amber accent-3">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">TT2016-A010</h5>
-                    <p class="grey-text text-lighten-4">SITIO WEB PARA LA VISUALIZACIÓN Y DIFUSIÓN DE CONTENIDO LITERARIO GENERADO POR LOS USUARIOS.</p>
-
-
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Comunidad</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Facebook</a></li>
-                        <li><a class="white-text" href="#!">Twitter</a></li>
-                        <li><a class="white-text" href="#!">Google+</a></li>
-                        <li><a class="white-text" href="#!">--------</a></li>
-                    </ul>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">edgar061093@gmail.com</a></li>
-                        <li><a class="white-text" href="#!">silvernoble@gmail.com</a></li>
-                        <li><a class="white-text" href="#!">---------</a></li>
-                        <li><a class="white-text" href="#!">---------</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
             <div class="container">
-                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">TT2016-A010</h5>
+                        <p class="grey-text text-lighten-4"><spring:message code="label.sitioWeb" /></p>
+
+
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text"><spring:message code="label.comunidad" /></h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Facebook</a></li>
+                            <li><a class="white-text" href="#!">Twitter</a></li>
+                            <li><a class="white-text" href="#!">Google+</a></li>
+                            <li><a class="white-text" href="#!">--------</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Connect</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">edgar061093@gmail.com</a></li>
+                            <li><a class="white-text" href="#!">silvernoble@gmail.com</a></li>
+                            <li><a class="white-text" href="#!">---------</a></li>
+                            <li><a class="white-text" href="#!">---------</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
+
+        </footer>
 
 
         <!--  Scripts-->
@@ -113,18 +109,18 @@
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
         <script type="text/javascript">
-                        function logout() {
-                            jQuery.ajax({
-                                url: "<%=request.getContextPath()%>" + "/logout.htm",
-                                type: "POST",
-                                success: function () {
+            function logout() {
+                jQuery.ajax({
+                    url: "<%=request.getContextPath()%>" + "/logout.htm",
+                    type: "POST",
+                    success: function () {
 
-                                },
-                                error: function () {
+                    },
+                    error: function () {
 
-                                }
-                            });
-                        }
+                    }
+                });
+            }
         </script>
 
     </body>

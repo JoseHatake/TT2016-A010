@@ -45,7 +45,7 @@ public class CuentaDAO {
             cuenta.setNumSeguidores(0);
             cuenta.setActivada(0);
             cuenta.setIsAdmin(Boolean.FALSE);
-            cuenta.setFoto("adefault/Portada.jpeg");
+            cuenta.setFoto("/imgen/default.jpg");
             sesion.save(usuario);
             sesion.save(cuenta);
             tx.commit(); 

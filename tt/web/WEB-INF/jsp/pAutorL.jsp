@@ -58,7 +58,7 @@
                         <div class="col s2">
                             <li class="collection-item avatar">
                                 <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                                <img src="data:image/jpeg;base64,${imgl}" alt="" class="circle responsive-img" style="width: 180px; height: 200px">
+                                <img src="<%=request.getContextPath()%>${imgl}" alt="" class="circle responsive-img">
                                 <div id="rcorners1" style="font-size: 15px; color: black; padding-left: 50px; padding-top: 10px; background-color: #ffc400"><b><label id="ns" style="color: black; font-size: 15px">${numseg}</label> <spring:message code="label.seguidores"/></b></div>
                         </div>
 
@@ -93,10 +93,10 @@
 
             <ul class="pagination" style="color: transparent">
                 <li id="izquierdo" class="waves-effect" onclick="anterior()"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                <li class="active" id="libro1" style="background: transparent; display: "><a id="l1" href="<%=request.getContextPath()%>/perfildelibro.htm?id=${idl1}"><img id="p1" class="responsive-img col s6 m2 l2" src="data:image/jpeg;base64,${plib1}" style="width: 200px; height: 300px"><div id="t1" class="caption center-align" style="color: black"><h5>${titulo1}</h5></div></a></li>
-                <li class="active" id="libro2" style="background: transparent; display: "><a id="l2" href="<%=request.getContextPath()%>/perfildelibro.htm?id=${idl2}"><img id="p2" class="responsive-img col s4 m2 l2" src="data:image/jpeg;base64,${plib2}" style="width: 200px; height: 300px"><div id="t2" class="caption center-align" style="color: black"><h5>${titulo2}</h5></div></a></li>
-                <li class="active" id="libro3"style="background: transparent; display: "><a id="l3" href="<%=request.getContextPath()%>/perfildelibro.htm?id=${idl3}"><img id="p3" class="responsive-img col s4 m2 l2" src="data:image/jpeg;base64,${plib3}" style="width: 200px; height: 300px"><div id="t3" class="caption center-align" style="color: black"><h5>${titulo3}</h5></div></a></li>
-                <li class="active" id="libro4"style="background: transparent; display: "><a id="l4" href="<%=request.getContextPath()%>/perfildelibro.htm?id=${idl4}"><img id="p4" class="responsive-img col s4 m2 l2" src="data:image/jpeg;base64,${plib4}" style="width: 200px; height: 300px"><div id="t4" class="caption center-align" style="color: black"><h5>${titulo4}</h5></div></a></li>
+                <li class="active" id="libro1" style="background: transparent; display: " onclick="cargaLibro($('#idlib1').text())" ><a href="#!"><img id="p1" class="responsive-img col s6 m2 l2" src="<%=request.getContextPath()%>${plib1}" ><div id="t1" class="caption center-align" style="color: black"><h5>${titulo1}</h5></div><label id="idlib1" style="display: none">${idl1}</label></a></li>
+                <li class="active" id="libro2" style="background: transparent; display: " onclick="cargaLibro($('#idlib2').text())"><a href="#!"><img id="p2" class="responsive-img col s4 m2 l2" src="<%=request.getContextPath()%>${plib2}" ><div id="t2" class="caption center-align" style="color: black"><h5>${titulo2}</h5></div><label id="idlib2" style="display: none">${idl2}</label></a></li>
+                <li class="active" id="libro3"style="background: transparent; display: " onclick="cargaLibro($('#idlib3').text())"><a href="#!"><img id="p3" class="responsive-img col s4 m2 l2" src="<%=request.getContextPath()%>${plib3}" ><div id="t3" class="caption center-align" style="color: black"><h5>${titulo3}</h5></div><label id="idlib3" style="display: none">${idl3}</label></a></li>
+                <li class="active" id="libro4"style="background: transparent; display: " onclick="cargaLibro($('#idlib4').text())"><a href="#!"><img id="p4" class="responsive-img col s4 m2 l2" src="<%=request.getContextPath()%>${plib4}" ><div id="t4" class="caption center-align" style="color: black"><h5>${titulo4}</h5></div><label id="idlib4" style="display: none">${idl4}</label></a></li>
                 <li id="derecho" class="waves-effect" onclick="siguiente()"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
             </ul>            
 
@@ -171,14 +171,14 @@
                                 $('#seguir').css("display", "");
                             }
                         }
-
-                        if ($('#haylog').text()) {
-                            $('#nl').css("display", "");
-                            $('#sl').css("display", "none");
-
-                        } else {
-                            $('#nl').css("display", "none");
-                            $('#sl').css("display", "");
+                      
+                        if($('#haylog').text()){
+                            $('#nl').css("display","");
+                            $('#sl').css("display","none");
+                            
+                        }else{
+                            $('#nl').css("display","none");
+                            $('#sl').css("display","");
                         }
                     });
 
@@ -203,11 +203,11 @@
                                         var tama = array[0] * 3 + 1;
                                         var index = 1;
                                         for (var i = 1; i < tama; i++) {
-                                            $('#l' + index).attr("href", "<%=request.getContextPath()%>/perfildelibro.htm?id=" + array[i])
+                                            $('#idlib' + index).text(array[i]);
                                             i++;
                                             $('#t' + index).text(array[i]);
                                             i++;
-                                            $('#p' + index).attr("src", "data:image/jpeg;base64," + array[i]);
+                                            $('#p' + index).attr("src", "<%=request.getContextPath()%>" + array[i]);
                                             index++;
 
                                         }
@@ -243,11 +243,11 @@
                                         var tama = array[0] * 3 + 1;
                                         var index = 1;
                                         for (var i = 1; i < tama; i++) {
-                                            $('#l' + index).attr("href", "<%=request.getContextPath()%>/perfildelibro.htm?id=" + array[i])
+                                            $('#idlib' + index).text(array[i]);
                                             i++;
                                             $('#t' + index).text(array[i]);
                                             i++;
-                                            $('#p' + index).attr("src", "data:image/jpeg;base64," + array[i]);
+                                            $('#p' + index).attr("src", "<%=request.getContextPath()%>" + array[i]);
                                             index++;
 
                                         }

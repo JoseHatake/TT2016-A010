@@ -1,7 +1,6 @@
 package Controladores;
 
 import DAO.LibroDAO;
-import DAO.SeguirDAO;
 import Modelos.Libro;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,9 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import utilidades.Correo;
 import utilidades.GuardarArchivo;
-import utilidades.MensajeNotificacion;
 import utilidades.Rutas;
 
 @Controller
@@ -47,16 +44,8 @@ public class ControladorNuevoLibro {
     @RequestMapping("controladorNuevoLibro")
     public String uploadMultipleFileHandler(@RequestParam("files[]") MultipartFile[] files, @RequestParam("tituloLibro") String titulo, @RequestParam("sinopsis") String sinopsis, @RequestParam("genero[]") String[] genero, @RequestParam("idioma") String idioma, Model model, HttpServletRequest request, HttpSession ses) throws IOException {
         SesionUsuario su = (SesionUsuario) ses.getAttribute("use");
-        Correo cor = new Correo();
-        MensajeNotificacion noti = new MensajeNotificacion();
-        SeguirDAO dao = new SeguirDAO();
-        List<String> correos;
-        String asunto;
-        String msj;
-        String encabezado;
-        String url;
-        String idUser = String.valueOf(su.getId());
-
+        String idUser = String.valueOf(su.getId());       
+       
         System.out.println("TAMANIO DEL ARCH " + files.length);
         System.out.println("Guardando archivo.");
         System.out.println("Params: " + "\nTITULO " + titulo + "\nSINOPSIS " + sinopsis + "\nGENERO 1" + genero[0] + "\nGENERO 2" + genero[1] + "\nIDIOMA " + idioma + "\nDIRECCION " + files[0].getName() + "\nUSUARIO " + request.getParameter("usuario"));
@@ -67,14 +56,15 @@ public class ControladorNuevoLibro {
                 String tipo = ((files[0].getContentType().toString()).split("/"))[1];
                 String generos = "";
                 for (int i = 0; i < genero.length; i++) {
-                    if (i == genero.length - 1) {
+                    if (i==genero.length-1) {
                         generos += genero[i];
-                    } else {
+                    }
+                    else{
                         generos += genero[i] + ",";
                     }
-
+                    
                 }
-                Libro libro = new Libro(titulo, generos, sinopsis, idioma, rutaArchivos + "/Portada." + tipo, 0, 1, su.getId(), Date.from(new Date().toInstant()));
+                Libro libro = new Libro(titulo, generos, sinopsis, idioma, rutaArchivos + "/Portada."+tipo, 0, 1, su.getId(), Date.from(new Date().toInstant()));
                 LibroDAO lib = new LibroDAO();
                 boolean resultadoBD = lib.guardaLibro(libro);
 
@@ -84,28 +74,9 @@ public class ControladorNuevoLibro {
                     } else {
                         return "fail";
                     }*/
-                    request.getSession().setAttribute("libro", libro);
-                    System.out.println("*****&&& NOMBRE LIBRO " + titulo);
+                     request.getSession().setAttribute("libro",libro);
+                    System.out.println("*****&&& NOMBRE LIBRO "+titulo);
                     System.out.println("REGISTRADO CORRECTAMENTE");
-                    correos = dao.obtenCorreoAutores(su.getId());
-                    url = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/perfildelibro.htm?id="+libro.getIdLibro();
-                    if (!correos.isEmpty()) {
-                        if (idioma.equals("es")) {
-                            asunto = "Una nueva obra ha sido publicada";
-                            encabezado = su.getPseudonimo() + " ha publicado su obra " + titulo;
-                            msj = noti.creaEspañol(encabezado, titulo, sinopsis, url);
-                        } else {
-                            asunto = "A new work has been published";
-                            encabezado = su.getPseudonimo() + " has published a new work " + titulo;
-                            msj = noti.creaIngles(encabezado, titulo, sinopsis, url);
-                        }
-                        
-                        for(int i=0; i<correos.size();i++){
-                            String actual = correos.get(i);
-                            cor.enviarCorreo(actual, asunto, msj);
-                        }
-                    }
-                    
                     return "registrarCapitulo";
                 } else {
                     return "fail";
