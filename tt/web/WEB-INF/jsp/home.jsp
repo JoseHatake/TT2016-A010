@@ -118,7 +118,7 @@
             </div>
             <div id="test1" class="carousel col s12 blue-grey lighten-5">
                 <c:forEach items="${model.listaImagenesRandom}" var="imagen" varStatus="loop">
-                    <a class="carousel-item" href="" style="width: 35%; margin-top: -7%;"><c:out value="${model.listaTitulosRandom.get(loop.index)}"/> <img src="data:image/jpeg;base64,${imagen}" alt="" class=" responsive-img" ></a>                                      
+                    <a class="carousel-item" href="<%=request.getContextPath()%>/perfildelibro.htm?idLibro=${model.idLibros.get(loop.index)}" style="width: 35%; margin-top: -7%;"><c:out value="${model.listaTitulosRandom.get(loop.index)}"/> <img src="data:image/jpeg;base64,${imagen}" alt="" class=" responsive-img" ></a>                                      
                     </c:forEach>
                 <br>
                 <br>
@@ -126,7 +126,7 @@
 
             <div id="test2" class="carousel col s12 blue-grey lighten-5">
                 <c:forEach items="${model.listaImagenesRecientes}" var="imagen" varStatus="loop">
-                    <a class="carousel-item carousel2" href="" style="width: 35%; margin-top: -7%; margin-left: -10%;"><c:out value="${model.listaTitulosRecientes.get(loop.index)}"/> <img src="data:image/jpeg;base64,${imagen}" alt="" class=" responsive-img" ></a>                                      
+                    <a class="carousel-item carousel2" href="<%=request.getContextPath()%>/perfildelibro.htm?idLibro=${model.idLibros.get(loop.index)}" style="width: 35%; margin-top: -7%; margin-left: -10%;"><c:out value="${model.listaTitulosRecientes.get(loop.index)}"/> <img src="data:image/jpeg;base64,${imagen}" alt="" class=" responsive-img" ></a>                                      
                     </c:forEach>
                 <br>
                 <br>
