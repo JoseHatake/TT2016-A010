@@ -69,14 +69,14 @@
                     url: "<%=request.getContextPath()%>" + "/logout.htm",
                     type: "POST",
                     success: function () {
-                        
+
                     },
                     error: function () {
-                       
+
                     }
                 });
             }
-            
+
 
         </script>   
         <style>
@@ -90,23 +90,25 @@
         </style>
     </head>
     <body>
-        <c:set var = "idioma" scope = "session" value = "${pageContext.response.locale}"/>
-        <nav>
-            <div class="nav-wrapper amber accent-3">
-                <a href="<%=request.getContextPath()%>/listado.htm"><img src="<%=request.getContextPath()%>/imgen/Captura.png" alt="" class=" responsive-img"></a>
-                <ul class="right hide-on-med-and-down">                    
-                    <li> <input id="search" type="search" ></li>
-                    <li> <label for="search"><i class="material-icons">search</i></label></li>
-                    <li><a href="<%=request.getContextPath()%>/pAutorL.htm" class="material-icons">perm_identity</a></li>
-                    <li><a href="<%=request.getContextPath()%>/nuevoLibro.htm" class="material-icons">library_add</a></li>
-                    <li><a href="<%=request.getContextPath()%>/CambiaPass.htm" class="material-icons">vpn_key</a></li>
-                    <li><a href="<%=request.getContextPath()%>/main.htm" class="material-icons" onclick="logout()">input</a></li>     
+        <main>
+            <c:set var = "idioma" scope = "session" value = "${pageContext.response.locale}"/>
+            <nav>
+                <div class="nav-wrapper amber accent-3">
+                    <a href="<%=request.getContextPath()%>/listado.htm"><img src="<%=request.getContextPath()%>/imgen/Captura.png" alt="" class=" responsive-img"></a>
+                    <ul class="right hide-on-med-and-down">                    
+                        <li> <input id="search" type="search" ></li>
+                        <li> <label for="search"><i class="material-icons">search</i></label></li>
+                        <li><a href="<%=request.getContextPath()%>/pAutorL.htm" class="material-icons">perm_identity</a></li>
+                        <li><a href="<%=request.getContextPath()%>/nuevoLibro.htm" class="material-icons">library_add</a></li>
+                        <li><a href="<%=request.getContextPath()%>/CambiaPass.htm" class="material-icons">vpn_key</a></li>
+                        <li><a href="<%=request.getContextPath()%>/main.htm" class="material-icons" onclick="logout()">input</a></li>     
 
-                </ul>
-            </div>
-        </nav>
+                    </ul>
+                </div>
+            </nav>
 
 
+<<<<<<< HEAD
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -137,42 +139,78 @@
                     <a class="" href="<%=request.getContextPath()%>/perfildelibro.htm?idLibro=${model.idLibros.get(loop.index)}"><img src="data:image/jpeg;base64,${imagen}" alt="" class="icons" ></a>                                      
                 </c:forEach>
                 <br><br>            
+=======
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a class="active" href="#test1">Random</a></li>
+                        <li class="tab col s3"><a href="#test2" id="test2Tab">Recientes</a></li>
+                        <li class="tab col s3"><a href="#test3">Los más Gustados</a></li>
+                        <!--  <li class="tab col s3"><a href="#test4">Seguidos</a></li>-->
+                    </ul>
+                </div>
+                <div id="test1" class="carousel col s12 blue-grey lighten-5">
+                    <c:forEach items="${model.listaImagenesRandom}" var="imagen" varStatus="loop">
+                        <a class="carousel-item" href="" style="width: 35%; margin-top: -7%;"><c:out value="${model.listaTitulosRandom.get(loop.index)}"/> <img src="data:image/jpeg;base64,${imagen}" alt="" class=" responsive-img" ></a>                                      
+                        </c:forEach>
+                    <br>
+                    <br>
+                </div>
+
+                <div id="test2" class="carousel col s12 blue-grey lighten-5">
+                    <c:forEach items="${model.listaImagenesRecientes}" var="imagen" varStatus="loop">
+                        <a class="carousel-item carousel2" href="" style="width: 35%; margin-top: -7%; margin-left: -10%;"><c:out value="${model.listaTitulosRecientes.get(loop.index)}"/> <img src="data:image/jpeg;base64,${imagen}" alt="" class=" responsive-img" ></a>                                      
+                        </c:forEach>
+                    <br>
+                    <br>
+                </div>
+
+                <div id="test3" class="blue-grey lighten-5" >
+                    <c:forEach items="${model.listaImagenesMasGustados}" var="imagen" varStatus="loop">
+
+                        <a class="" href=""><img src="data:image/jpeg;base64,${imagen}" alt="" class="icons" ></a>                                      
+                        </c:forEach>
+                    <br><br>            
+                </div>
+>>>>>>> repoLock
             </div>
-            <footer class="page-footer orange">
+        </main>
+
+        <footer class="amber accent-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">TT2016-A010</h5>
+                        <p class="grey-text text-lighten-4">SITIO WEB PARA LA VISUALIZACIÓN Y DIFUSIÓN DE CONTENIDO LITERARIO GENERADO POR LOS USUARIOS.</p>
+
+
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Comunidad</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Facebook</a></li>
+                            <li><a class="white-text" href="#!">Twitter</a></li>
+                            <li><a class="white-text" href="#!">Google+</a></li>
+                            <li><a class="white-text" href="#!">--------</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Connect</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">edgar061093@gmail.com</a></li>
+                            <li><a class="white-text" href="#!">silvernoble@gmail.com</a></li>
+                            <li><a class="white-text" href="#!">---------</a></li>
+                            <li><a class="white-text" href="#!">---------</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
                 <div class="container">
-                    <div class="row">
-                        <div class="col l6 s12">
-                            <h5 class="white-text">TT2016-A010</h5>
-                            <p class="grey-text text-lighten-4">SITIO WEB PARA LA VISUALIZACIÓN Y DIFUSIÓN DE CONTENIDO LITERARIO GENERADO POR LOS USUARIOS.</p>
-
-
-                        </div>
-                        <div class="col l3 s12">
-                            <h5 class="white-text">Comunidad</h5>
-                            <ul>
-                                <li><a class="white-text" href="#!">Facebook</a></li>
-                                <li><a class="white-text" href="#!">Twitter</a></li>
-                                <li><a class="white-text" href="#!">Google+</a></li>
-                                <li><a class="white-text" href="#!">--------</a></li>
-                            </ul>
-                        </div>
-                        <div class="col l3 s12">
-                            <h5 class="white-text">Connect</h5>
-                            <ul>
-                                <li><a class="white-text" href="#!">edgar061093@gmail.com</a></li>
-                                <li><a class="white-text" href="#!">silvernoble@gmail.com</a></li>
-                                <li><a class="white-text" href="#!">---------</a></li>
-                                <li><a class="white-text" href="#!">---------</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <a class="orange-text text-lighten-3" href="http://materializecss.com"></a>
                 </div>
-                <div class="footer-copyright">
-                    <div class="container">
-                        Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-                    </div>
-                </div>
-            </footer>
+            </div>
+        </footer>
 
 
 
