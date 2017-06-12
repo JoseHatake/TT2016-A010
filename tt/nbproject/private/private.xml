@@ -19,22 +19,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/Controladores/ControladorMain.java</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/web/WEB-INF/jsp/nuevoLibro.jsp</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/Controladores/ValidaP.java</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/web/WEB-INF/jsp/home.jsp</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/Controladores/ControladorPerfilACL.java</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/Controladores/CargaLibrosA.java</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/resources/messages_en.properties</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/Controladores/ControladorCambiarContraseña.java</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/Controladores/ControladorDejarDeSeguirA.java</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/web/WEB-INF/jsp/CambiaPass.jsp</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/web/WEB-INF/jsp/pAutorL.jsp</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/Controladores/ControladorSeguirA.java</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/src/java/resources/messages_es.properties</file>
-            <file>file:/C:/Users/Lock/Documents/NetBeansProjects/tt/web/WEB-INF/jsp/registrarse.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
