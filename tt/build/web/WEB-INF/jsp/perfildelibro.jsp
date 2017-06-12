@@ -1,4 +1,6 @@
-
+<%@page import="Modelos.Libro"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -39,26 +41,61 @@
       <div id="fb-root"><!-- Carga contenidos de FaceBook --></div>
         <form:form method="POST" modelAttribute="log">
           <nav>
-            <div class="amber accent-3">
-            <img src="Captura.png" class=" responsive-img">
-              <ul class="right hide-on-med-and-down">
-                <li> <input id="search" type="search" required></li>
-                <li> <label for="search"><i class="material-icons">search</i></label></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">chat_bubble_outline</i></li>
-                <li><i class="material-icons">settings</i></li>
-              </ul>
-            </div>
-          </nav>
+                <div class="nav-wrapper amber accent-3">
+                    <a href="<%=request.getContextPath()%>/listado.htm"><img src="<%=request.getContextPath()%>/imgen/Captura.png" alt="" class=" responsive-img"></a>
+                    <ul class="right hide-on-med-and-down" id="nl" style="display: ">
+                        <li> <input id="search" type="search" ></li>
+                        <li> <label for="search"><i class="material-icons">search</i></label></li>
+                        <li><a href="<%=request.getContextPath()%>/pAutorL.htm" class="material-icons">perm_identity</a></li>
+                        <li><a href="<%=request.getContextPath()%>/nuevoLibro.htm" class="material-icons">library_add</a></li>
+                        <li><a href="<%=request.getContextPath()%>/CambiaPass.htm" class="material-icons">vpn_key</a></li>
+                        <li><a href="<%=request.getContextPath()%>/main.htm" class="material-icons" onclick="logout()">input</a></li>     
+
+                    </ul>
+
+                    <ul class="right hide-on-med-and-down" id="sl" style="display: none;">
+                        <li> <input id="search" type="search"></li>
+                        <li> <label for="search"><i class="material-icons">search</i></label></li>
+                        <li><input  type="text" name="userName" length="5" value="<spring:message code="label.nombre" />"></li>                   
+                        <li><input  type="password" name="password" length="5" value="<spring:message code="label.contra" />"></li>                   
+                        <li><button class="black waves-light btn" type="submit" name="login" value="Logear"><spring:message code="label.insesion" /></button></li>
+                        <li><button class="black waves-light btn" type="submit" name="registrarse" value="Register"><spring:message code="label.registrar" /></button></li>   
+                        <div style=""><div style="color: red">${param.error}</div> <br><a href="<%=request.getContextPath()%>/RestaurarContra.htm" ><spring:message code="label.olcon" /></a></div>
+
+                    </ul> 
+                </div>
+            </nav>
 
           <div class="row col s6 m2 l2">
-            <h5 class="left-align">Titulo de Obra</h5>
-            <img class="responsive-img col s6 m2 l2" src="2016-11-01 21.08.29.jpg">
+            <h5 class="left-align">${libro.nombre}</h5>
+            <img class="responsive-img col s6 m2 l2" src="data:image/jpeg;base64,${portada}">
             <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=143&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=126104161298033" width="143" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
             <!-- Inserta esta etiqueta donde quieras que aparezca Botón Compartir. -->
             <div class="g-plus" data-action="share" data-annotation="none" data-href="https://translate.google.com.mx"></div>
             <!-- Inserta esta etiqueta después de la última etiqueta de compartir. -->
+
+            <table border="1">
+              <thead>
+                  <tr>
+                      <th colspan='2'>
+                          <h2>Capítulos</h2>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                <c:forEach items="${capitulos}" var="capitulo" varStatus="loop">
+                    <tr>
+                        <td>
+                            <a class="carousel-item" href="<%=request.getContextPath()%>${capitulo.capitulo}" style="width: 35%; margin-top: -7%;">${capitulo.nombre}</a>                                      
+                        </td>
+                        <td>
+                            <i class="Small material-icons" onclick="eliminarCapitulo('${capitulo.idCapitulo}');">delete</i>
+                        </td>
+                    </tr>
+                </c:forEach>
+              </tbody>
+            </table>
 
             <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
           </div>
@@ -66,11 +103,11 @@
           <div class="col s6 m4 l5"> 
             <ul class="collection">
               <li class="collection-item avatar">
-                <img src="2016-11-01 21.08.29.jpg" alt="" class="circle responsive-img col s6 m2 l3">
+                <img src="data:image/jpeg;base64,${foto}" alt="" class="circle responsive-img col s6 m2 l3">
                 <span class="title"></span>
-                <p>Autor:
+                <p>Autor: ${autor.pseudonimo}
                   <br>
-                   Mensaje de Perfil:
+                   Mensaje de Perfil: ${autor.mensaje}
                 </p>
                 <a href="#!" class="secondary-content"><i class="material-icons col s6 m2 l3">grade</i></a>
               </li>
