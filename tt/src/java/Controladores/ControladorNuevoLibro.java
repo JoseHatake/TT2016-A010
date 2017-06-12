@@ -57,9 +57,7 @@ public class ControladorNuevoLibro {
         String url;
         String idUser = String.valueOf(su.getId());
 
-        System.out.println("TAMANIO DEL ARCH " + files.length);
-        System.out.println("Guardando archivo.");
-        System.out.println("Params: " + "\nTITULO " + titulo + "\nSINOPSIS " + sinopsis + "\nGENERO 1" + genero[0] + "\nGENERO 2" + genero[1] + "\nIDIOMA " + idioma + "\nDIRECCION " + files[0].getName() + "\nUSUARIO " + request.getParameter("usuario"));
+        
 //"/Portadas/ULC.jpg"
         String rutaArchivos = idUser + "/" + titulo;
         if (GuardarArchivo.crearCarpeta(rutaArchivos)) {

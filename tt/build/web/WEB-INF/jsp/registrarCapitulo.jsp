@@ -109,6 +109,13 @@
             <button class="btn waves-effect" type="button" id="menos" name="menos"><spring:message code="label.quitarCapitulo" />
                 <i class="material-icons right">play_for_work</i>
             </button> 
+            <br>
+            <p></p>
+            <c:set var="idLibro" value="${sessionScope.libro.idLibro}" scope="session"/>
+            <a href="<%=request.getContextPath()%>/perfildelibro.htm?id=idLibro" class="btn waves-effect" type="button">Agregar Capitulos mas tarde
+                <i class="material-icons right">play_for_work</i>
+
+            </a>
         </div>
 
         <!-- VARIABLES!!!!!!!-->
