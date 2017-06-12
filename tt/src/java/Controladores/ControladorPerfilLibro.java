@@ -53,10 +53,6 @@ public class ControladorPerfilLibro {
         
         capitulos = capituloDao.obtenCapitulosLibro(idLibro);
         
-        for (Capitulo cap: capitulos){
-            System.out.println("capitulos : " + cap);
-        }
-        
         model.addObject("libro",perfil);
         model.addObject("autor",cuenta);
         model.addObject("portada",imagenPortada);

@@ -103,12 +103,12 @@ public class CapituloDAO {
     
     //Elimina capitulos por libro
     
-    public boolean eliminaCapituloLibro(int id) throws HibernateException {     
+    public boolean eliminaCapitulo(int id) throws HibernateException {     
 
         try 
         { 
             iniciaOperacion(); 
-            String hql = "delete from Capitulo where Libro_idLibro= :id";
+            String hql = "delete from Capitulo where idCapitulo= :id";
             sesion.createQuery(hql).setLong("id", new Integer(id)).executeUpdate();
             tx.commit(); 
             return true;

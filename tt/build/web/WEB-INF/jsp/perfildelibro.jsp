@@ -31,6 +31,7 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/deresSociales.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/peticionesAjax.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
@@ -38,7 +39,7 @@
     </head>
 
     <body>
-      <div id="fb-root"><!-- Carga contenidos de FaceBook --></div>
+        <div id="fb-root"><!-- Carga contenidos de FaceBook --></div>
         <form:form method="POST" modelAttribute="log">
           <nav>
                 <div class="nav-wrapper amber accent-3">
@@ -67,15 +68,19 @@
             </nav>
 
           <div class="row col s6 m2 l2">
-            <h5 class="left-align">${libro.nombre}</h5>
-            <img class="responsive-img col s6 m2 l2" src="data:image/jpeg;base64,${portada}">
-            <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=143&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=126104161298033" width="143" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+              <h5 class="left-align">${libro.nombre}</h5>
+              <img class="responsive-img col s6 m2 l2" src="data:image/jpeg;base64,${portada}">
+              <div class="row col s6 m2 l2">
+                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=143&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=126104161298033" width="143" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
-            <!-- Inserta esta etiqueta donde quieras que aparezca Botón Compartir. -->
-            <div class="g-plus" data-action="share" data-annotation="none" data-href="https://translate.google.com.mx"></div>
-            <!-- Inserta esta etiqueta después de la última etiqueta de compartir. -->
+                    <!-- Inserta esta etiqueta donde quieras que aparezca Botón Compartir.
+                    <div class="g-plus col s6 m2 l2" data-action="share" data-annotation="none" data-href="https://translate.google.com.mx"></div>
+                     Inserta esta etiqueta después de la última etiqueta de compartir. -->
 
-            <table class="highlight col s6 m2 l2">
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+              </div>
+            
+            <table class="highlight row col s6 m2 l2">
               <thead>
                   <tr>
                       <th colspan='2'>
@@ -85,19 +90,18 @@
               </thead>
               <tbody>
                 <c:forEach items="${capitulos}" var="capitulo" varStatus="loop">
-                    <tr>
+                    <tr id="${capitulo.idCapitulo}">
                         <td>
-                            <a class="carousel-item" href="<%=request.getContextPath()%>${capitulo.capitulo}" style="width: 35%; margin-top: -7%;">${capitulo.nombre}</a>                                      
+                            <a class="carousel-item" href="<%=request.getContextPath()%>/${capitulo.capitulo}" style="width: 35%; margin-top: -7%;">${capitulo.nombre}</a>                                      
                         </td>
                         <td>
-                            <i class="Small material-icons" onclick="eliminarCapitulo('${capitulo.idCapitulo}');">delete</i>
+                            <i class="Small material-icons" style="cursor: pointer" onclick="eliminarCapitulo('<%=request.getContextPath()%>','${capitulo.idCapitulo}');">delete</i>
                         </td>
                     </tr>
                 </c:forEach>
               </tbody>
             </table>
 
-            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
           </div>
 
           <div class="col s6 m4 l5"> 
