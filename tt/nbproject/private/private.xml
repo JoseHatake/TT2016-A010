@@ -19,6 +19,15 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/src/java/Controladores/CargaLibrosA.java</file>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/web/WEB-INF/jsp/registrarse.jsp</file>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/src/java/Controladores/ControladorRegistro.java</file>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/src/java/Controladores/ControladorPerfilACL.java</file>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/src/java/Controladores/ControladorNuevoLibro.java</file>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/web/WEB-INF/jsp/perfildelibro.jsp</file>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/web/WEB-INF/jsp/pAutorL.jsp</file>
+            <file>file:/C:/Users/Lock/Documents/GitHub/TT2016-A010/tt/src/java/utilidades/MensajeNotificacion.java</file>
+        </group>
     </open-files>
 </project-private>
