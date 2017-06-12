@@ -81,8 +81,6 @@
             <!-- Comentarios de Facebook -->
           </div>
         </form:form>
-    
-    <h1><%=request.getParameter("idLibro")%></h1>
 
         <footer class="amber accent-3 col s12 m4 l3">
           <div class="container col s12 m4 l3">

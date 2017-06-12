@@ -134,7 +134,7 @@
 
             <div id="test3" class="blue-grey lighten-5" >
                 <c:forEach items="${model.listaImagenesMasGustados}" var="imagen" varStatus="loop">
-                    <a class="" href="perfildellibro.jsp?idLibro=${model.idLibros}"><img src="data:image/jpeg;base64,${imagen}" alt="" class="icons" ></a>                                      
+                    <a class="" href="<%=request.getContextPath()%>/perfildellibro.htm?idLibro=${model.idLibros.get(loop.index)}"><img src="data:image/jpeg;base64,${imagen}" alt="" class="icons" ></a>                                      
                 </c:forEach>
                 <br><br>            
             </div>
