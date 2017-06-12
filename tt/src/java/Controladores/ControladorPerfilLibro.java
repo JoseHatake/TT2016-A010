@@ -31,6 +31,8 @@ import utilidades.GuardarArchivo;
 public class ControladorPerfilLibro {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView cargaPerfilLibro(@RequestParam("idLibro") int idLibro, HttpSession ses) throws UnsupportedEncodingException{
+        SesionUsuario su = (SesionUsuario) ses.getAttribute("use");
+        Integer perfilUsuario;
         ModelAndView model;
         Libro perfil = new Libro();
         Cuenta cuenta = new Cuenta();
@@ -53,11 +55,19 @@ public class ControladorPerfilLibro {
         
         capitulos = capituloDao.obtenCapitulosLibro(idLibro);
         
+        if (su.IsAdmin)
+            perfilUsuario = 1;
+        else if(su.getId() != 0)
+            perfilUsuario = 2;
+        else
+            perfilUsuario = 0;
+        
         model.addObject("libro",perfil);
         model.addObject("autor",cuenta);
         model.addObject("portada",imagenPortada);
         model.addObject("foto",imagenAutor);
         model.addObject("capitulos", capitulos);
+        model.addObject("perfil", String.valueOf(perfilUsuario));
         return model;
     }
 }

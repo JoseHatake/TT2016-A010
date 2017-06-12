@@ -94,9 +94,11 @@
                         <td>
                             <a class="carousel-item" href="<%=request.getContextPath()%>/${capitulo.capitulo}" style="width: 35%; margin-top: -7%;">${capitulo.nombre}</a>                                      
                         </td>
+                        <c:if test="${perfil == 1 or perfil == 2}">
                         <td>
                             <i class="Small material-icons" style="cursor: pointer" onclick="eliminarCapitulo('<%=request.getContextPath()%>','${capitulo.idCapitulo}');">delete</i>
                         </td>
+                        </c:if>
                     </tr>
                 </c:forEach>
               </tbody>
