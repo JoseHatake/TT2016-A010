@@ -75,11 +75,11 @@
             <div class="g-plus" data-action="share" data-annotation="none" data-href="https://translate.google.com.mx"></div>
             <!-- Inserta esta etiqueta después de la última etiqueta de compartir. -->
 
-            <table border="1">
+            <table class="highlight col s6 m2 l2">
               <thead>
                   <tr>
                       <th colspan='2'>
-                          <h2>Capítulos</h2>
+                          <h2>Cap�tulos</h2>
                       </th>
                   </tr>
               </thead>
