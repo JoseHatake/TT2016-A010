@@ -9,6 +9,7 @@ import DAO.CuentaDAO;
 import DAO.LibroDAO;
 import Modelos.Cuenta;
 import Modelos.Libro;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import utilidades.GuardarArchivo;
 import utilidades.Validaciones;
 
 /**
@@ -27,10 +29,12 @@ import utilidades.Validaciones;
 public class ControladorPerfilACL {
 
     @RequestMapping(value = "/pAutorL", method = RequestMethod.GET)
-    public ModelAndView PerfilACL(@RequestParam("id") int id, HttpSession ses) {
+    public ModelAndView PerfilACL(@RequestParam("id") int id, HttpSession ses) throws UnsupportedEncodingException {
         ModelAndView model;
         Validaciones val = new Validaciones();
         SesionUsuario su = (SesionUsuario) ses.getAttribute("use");
+        byte[] img;
+        String portada;
 
         model = new ModelAndView("pAutorL");
         CuentaDAO dao = new CuentaDAO();
@@ -49,12 +53,14 @@ public class ControladorPerfilACL {
         if (su != null) {
             model.addObject("log", "1");
         } else {
-           model.addObject("log", "0");
+            model.addObject("log", "0");
         }
         model.addObject("idp", id);
         model.addObject("sigu", sigue);
         model.addObject("numseg", usuario.getNumSeguidores());
-        model.addObject("imgl", usuario.getFoto());
+        img = GuardarArchivo.leerImagenes(usuario.getFoto());
+        portada = new String(img, "UTF-8");
+        model.addObject("imgl", portada);
         model.addObject("autor", usuario.getPseudonimo());
         model.addObject("mp", usuario.getMensaje());
         model.addObject("sm", usuario.getDescripcionP());
@@ -63,7 +69,9 @@ public class ControladorPerfilACL {
             for (int i = 0; i < libros.size(); i++) {
                 int num = i + 1;
                 lib = libros.get(i);
-                model.addObject("plib" + num, lib.getPortada());
+                img = GuardarArchivo.leerImagenes(lib.getPortada());
+                portada = new String(img, "UTF-8");
+                model.addObject("plib" + num, portada);
                 model.addObject("titulo" + num, lib.getNombre());
                 model.addObject("idl" + num, lib.getIdLibro());
             }
@@ -71,7 +79,9 @@ public class ControladorPerfilACL {
             for (int i = 0; i < 4; i++) {
                 int num = i + 1;
                 lib = libros.get(i);
-                model.addObject("plib" + num, lib.getPortada());
+                img = GuardarArchivo.leerImagenes(lib.getPortada());
+                portada = new String(img, "UTF-8");
+                model.addObject("plib" + num, portada);
                 model.addObject("titulo" + num, lib.getNombre());
                 model.addObject("idl" + num, lib.getIdLibro());
             }
@@ -82,10 +92,12 @@ public class ControladorPerfilACL {
 
     //Carga la pagina con el perfil de la sesion
     @RequestMapping(value = "/pAutorL", method = RequestMethod.GET, params = {"!id"})
-    public ModelAndView miP(HttpSession ses) {
+    public ModelAndView miP(HttpSession ses) throws UnsupportedEncodingException {
         ModelAndView model;
         Validaciones val = new Validaciones();
         SesionUsuario su = (SesionUsuario) ses.getAttribute("use");
+        byte[] img;
+        String portada;
 
         model = new ModelAndView("pAutorL");
         CuentaDAO dao = new CuentaDAO();
@@ -104,7 +116,9 @@ public class ControladorPerfilACL {
         model.addObject("idp", usuario.getIdUsuario());
         model.addObject("sigu", sigue);
         model.addObject("numseg", usuario.getNumSeguidores());
-        model.addObject("imgl", usuario.getFoto());
+        img = GuardarArchivo.leerImagenes(usuario.getFoto());
+        portada = new String(img, "UTF-8");
+        model.addObject("imgl", portada);
         model.addObject("autor", usuario.getPseudonimo());
         model.addObject("mp", usuario.getMensaje());
         model.addObject("sm", usuario.getDescripcionP());
@@ -113,7 +127,9 @@ public class ControladorPerfilACL {
             for (int i = 0; i < libros.size(); i++) {
                 int num = i + 1;
                 lib = libros.get(i);
-                model.addObject("plib" + num, lib.getPortada());
+                img = GuardarArchivo.leerImagenes(lib.getPortada());
+                portada = new String(img, "UTF-8");
+                model.addObject("plib" + num, portada);
                 model.addObject("titulo" + num, lib.getNombre());
                 model.addObject("idl" + num, lib.getIdLibro());
             }
@@ -121,7 +137,9 @@ public class ControladorPerfilACL {
             for (int i = 0; i < 4; i++) {
                 int num = i + 1;
                 lib = libros.get(i);
-                model.addObject("plib" + num, lib.getPortada());
+                img = GuardarArchivo.leerImagenes(lib.getPortada());
+                portada = new String(img, "UTF-8");
+                model.addObject("plib" + num, portada);
                 model.addObject("titulo" + num, lib.getNombre());
                 model.addObject("idl" + num, lib.getIdLibro());
             }

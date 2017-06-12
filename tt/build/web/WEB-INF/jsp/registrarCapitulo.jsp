@@ -109,6 +109,13 @@
             <button class="btn waves-effect" type="button" id="menos" name="menos"><spring:message code="label.quitarCapitulo" />
                 <i class="material-icons right">play_for_work</i>
             </button> 
+            <br>
+            <p></p>
+            <c:set var="idLibro" value="${sessionScope.libro.idLibro}" scope="session"/>
+            <a href="<%=request.getContextPath()%>/perfildelibro.htm?idLibro=${idLibro}" class="btn waves-effect" type="button">Agregar Capitulos mas tarde
+                <i class="material-icons right">play_for_work</i>
+
+            </a>
         </div>
 
         <!-- VARIABLES!!!!!!!-->
@@ -168,39 +175,39 @@
             <div class="row" id="archivos2">
 
             </div>
+        </form>
+        <footer class="amber accent-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">TT2016-A010</h5>
+                        <p class="grey-text text-lighten-4">SITIO WEB PARA LA VISUALIZACIÓN Y DIFUSIÓN DE CONTENIDO LITERARIO GENERADO POR LOS USUARIOS.</p>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Comunidad</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Facebook</a></li>
+                            <li><a class="white-text" href="#!">Twitter</a></li>
+                            <li><a class="white-text" href="#!">Google+</a></li>
+                            <li><a class="white-text" href="#!">--------</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Connect</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">edgar061093@gmail.com</a></li>
+                            <li><a class="white-text" href="#!">silvernoble@gmail.com</a></li>
 
-            <footer class="amber accent-3">
-                <div class="container">
-                    <div class="row">
-                        <div class="col l6 s12">
-                            <h5 class="white-text">TT2016-A010</h5>
-                            <p class="grey-text text-lighten-4">SITIO WEB PARA LA VISUALIZACIÓN Y DIFUSIÓN DE CONTENIDO LITERARIO GENERADO POR LOS USUARIOS.</p>
-                        </div>
-                        <div class="col l3 s12">
-                            <h5 class="white-text">Comunidad</h5>
-                            <ul>
-                                <li><a class="white-text" href="#!">Facebook</a></li>
-                                <li><a class="white-text" href="#!">Twitter</a></li>
-                                <li><a class="white-text" href="#!">Google+</a></li>
-                                <li><a class="white-text" href="#!">--------</a></li>
-                            </ul>
-                        </div>
-                        <div class="col l3 s12">
-                            <h5 class="white-text">Connect</h5>
-                            <ul>
-                                <li><a class="white-text" href="#!">edgar061093@gmail.com</a></li>
-                                <li><a class="white-text" href="#!">silvernoble@gmail.com</a></li>
-
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
                 </div>
+            </div>
 
-            </footer>
+        </footer>
 
 
 
-        </form>
+
 
         <script>
 

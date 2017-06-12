@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import utilidades.GuardarArchivo;
 
 /**
@@ -31,8 +32,9 @@ public class ControladorCapitulos {
     private ServletFileUpload servletFileUpload;
 
     @RequestMapping("controladorAgregarCapitulos")
-    public String uploadMultipleFileHandler(@RequestParam("files[]") MultipartFile[] files, @RequestParam("tituloCapitulo[]") String[] tituloCap, @RequestParam("numero[]") String[] numeroCap, Model model, HttpServletRequest request, HttpSession ses) throws UnsupportedEncodingException {
+    public ModelAndView uploadMultipleFileHandler(@RequestParam("files[]") MultipartFile[] files, @RequestParam("tituloCapitulo[]") String[] tituloCap, @RequestParam("numero[]") String[] numeroCap, Model model, HttpServletRequest request, HttpSession ses) throws UnsupportedEncodingException {
         SesionUsuario su = (SesionUsuario) ses.getAttribute("use");
+        ModelAndView modelo = new ModelAndView("redirect:/pAutorL.htm");;
         System.out.println("TAMANIO DEL ARCH " + files.length);
         System.out.println("User. " + request.getSession().getAttribute("user"));
         request.setCharacterEncoding("UTF-8");
@@ -47,16 +49,17 @@ public class ControladorCapitulos {
                 if (dao.guardaCapitulo(capitulo)) {
                     System.out.println("TITULO CAPITULO" + capitulo.getNombre());
                     System.out.println("Guardado");
-                    resultado = "done";
+                    modelo = new ModelAndView("redirect:/pAutorL.htm");
                 } else {
                     System.out.println("FAIL BD");
+                    modelo=new ModelAndView("fail");
                     resultado = "fail";
                 }
             }
         } else {
             System.out.println("FAIL ERROR ARCHIVOS");
-            resultado = "fail";
+            modelo=new ModelAndView("fail");
         }
-        return resultado;
+        return modelo;
     }
 }

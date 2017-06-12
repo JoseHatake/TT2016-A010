@@ -81,7 +81,7 @@ public class CapituloDAO {
     
     //Elimina un capitulo por id
     
-    public boolean eliminaCapitulo(Capitulo capitulo) throws HibernateException {     
+   /* public boolean eliminaCapitulo(Capitulo capitulo) throws HibernateException {     
 
         try 
         { 
@@ -99,7 +99,7 @@ public class CapituloDAO {
             sesion.close(); 
         }  
         
-    }
+    }*/
     
     //Elimina capitulos por libro
     

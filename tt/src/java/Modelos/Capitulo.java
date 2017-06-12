@@ -83,9 +83,9 @@ public class Capitulo implements Serializable {
     public void setHora_fecha(Date Hora_fecha) {
         this.Hora_fecha = Hora_fecha;
     }
+    
+   
 
-    @Override
-    public String toString() {
-        return "Capitulo{" + "idCapitulo=" + idCapitulo + ", Nombre=" + Nombre + ", Numero=" + Numero + ", Capitulo=" + Capitulo + ", Libro_idLibro=" + Libro_idLibro + ", Hora_fecha=" + Hora_fecha + '}';
-    }
+    
+    
 }

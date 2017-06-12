@@ -121,10 +121,9 @@ public class Libro implements Serializable{
 
     public void setHora_fecha(Date Hora_fecha) {
         this.Hora_fecha = Hora_fecha;
-    }  
-
-    @Override
-    public String toString() {
-        return "Libro{" + "idLibro=" + idLibro + ", Nombre=" + Nombre + ", Clasificacion=" + Clasificacion + ", Descripcion=" + Descripcion + ", idioma=" + idioma + ", Portada=" + Portada + ", Likes=" + Likes + ", Status=" + Status + ", Usuario_idUsuario=" + Usuario_idUsuario + ", Hora_fecha=" + Hora_fecha + '}';
     }
+    
+    
+    
+      
 }
