@@ -45,9 +45,9 @@
                     <li> <input id="search" type="search" ></li>
                     <li> <label for="search"><i class="material-icons">search</i></label></li>
                     <li><a href="<%=request.getContextPath()%>/pAutorL.htm" class="material-icons">perm_identity</a></li>
-                    <li><a href="" class="material-icons">library_add</a></li>
-                    <li><a href="" class="material-icons">vpn_key</a></li>
-                    <li><a href="" class="material-icons">input</a></li>     
+                        <li><a href="<%=request.getContextPath()%>/nuevoLibro.htm" class="material-icons">library_add</a></li>
+                        <li><a href="<%=request.getContextPath()%>/CambiaPass.htm" class="material-icons">vpn_key</a></li>
+                        <li><a href="<%=request.getContextPath()%>/main.htm" class="material-icons" onclick="logout()">input</a></li>     
 
                 </ul>
 
