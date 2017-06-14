@@ -54,6 +54,25 @@ public class GuardarArchivo {
         }
 
     }
+    
+     public static String guardarPerfil(MultipartFile file, String idUser) {
+        String tipo = ((file.getContentType().toString()).split("/"))[1];
+        if(tipo.equals("jpeg")){
+            tipo="jpg";
+        }
+        String rutaTemp = idUser + "/Perfil" + "." + tipo;
+        Path path = Paths.get(Rutas.rutaArchivos +rutaTemp);
+        try (BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName("UTF-8"))) {
+            Files.write(path, file.getBytes());
+            System.out.println("Archivo guardado correctamente");
+            return rutaTemp;
+        } catch (IOException ex) {
+            System.err.println("No se pudo agregar el archivo");
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
 
     public static boolean crearCarpeta(String parametros) {
         String pathArchivo;
@@ -92,5 +111,7 @@ public class GuardarArchivo {
         }
         return bytes;
     }
+    
+    
 
 }

@@ -64,8 +64,7 @@ public class ControladorPerfilLibro {
         img = GuardarArchivo.leerImagenes(cuenta.getFoto());
         imagenAutor = new String(img, "UTF-8");
 
-        String url = request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
-        url = request.getServletContext().getRealPath("/");
+        String url = request.getServletContext().getRealPath("/");
         capitulos = capituloDao.obtenCapitulosLibro(idLibro);
         copiarArchivoGeneraRuta(capitulos, url);
 
@@ -97,10 +96,13 @@ public class ControladorPerfilLibro {
         String[] carpetas = null;
         String archivoOrigen = null;
         String archvioDestino = null;
-
+        String urlTMP = "";
         carpetas = capitulos.get(0).getCapitulo().split("/");
         
-        fileIn = new File(url);//Crea el direcotrio temporal
+        urlTMP = url;
+        urlTMP += carpetas[0] + "/" + carpetas[1] + "/";
+        
+        fileIn = new File(urlTMP);//Crea el direcotrio temporal
         fileIn.mkdirs();//Crea el directorio temporal
 
         Rutas ruta = null;
