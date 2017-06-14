@@ -28,6 +28,47 @@
         <link href="https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet">
         <style>.BarrioFont{
                 font-family: 'Barrio', cursive;
+            }
+
+            .custom-input-file {
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+                border: 1px solid #000;
+                border-radius: 5px;
+                background-color: #fff;
+                color: #000;
+                text-align: center;
+                font-family: verdana;
+                font-size: 12pt;
+                width: 200px;
+                min-height: 40px;
+            }
+            .custom-input-file:hover {
+                background-color: #000;
+                color: #fff;
+            }
+            .custom-input-file .input-file {
+                margin: 0;
+                padding: 0;outline:0;
+                font-size: 10000px;
+                border: 10000px solid transparent;
+                opacity: 0;
+                filter: alpha(opacity=0);
+                position: absolute;
+                right: -1000px;
+                top: -1000px;
+                cursor: pointer;
+            }
+            .custom-input-file .archivo {
+                background-color: #000;
+                color: #fff;
+                font-size: 7pt;
+                overflow: hidden;
+            }
+            .custom-input-file:hover .archivo {
+                background-color: #fff;
+                color: #000;   
             } 
 
         </style>
@@ -45,9 +86,9 @@
                     <li> <input id="search" type="search" ></li>
                     <li> <label for="search"><i class="material-icons">search</i></label></li>
                     <li><a href="<%=request.getContextPath()%>/pAutorL.htm" class="material-icons">perm_identity</a></li>
-                        <li><a href="<%=request.getContextPath()%>/nuevoLibro.htm" class="material-icons">library_add</a></li>
-                        <li><a href="<%=request.getContextPath()%>/CambiaPass.htm" class="material-icons">vpn_key</a></li>
-                        <li><a href="<%=request.getContextPath()%>/main.htm" class="material-icons" onclick="logout()">input</a></li>     
+                    <li><a href="<%=request.getContextPath()%>/nuevoLibro.htm" class="material-icons">library_add</a></li>
+                    <li><a href="<%=request.getContextPath()%>/CambiaPass.htm" class="material-icons">vpn_key</a></li>
+                    <li><a href="<%=request.getContextPath()%>/main.htm" class="material-icons" onclick="logout()">input</a></li>     
 
                 </ul>
 
@@ -81,7 +122,7 @@
 
                                     <!-- File input -->    
                                     <div class="custom-input-file wrapper" style="display: none" id="loadimg"><input type="file" class="input-file" id="fileUpload" name="file" accept="image/png,image/jpeg"/>
-                                       <spring:message code="label.cambiarimgp"/>
+                                        <spring:message code="label.cambiarimgp"/>
                                         <div class="archivo">...</div>
                                     </div> 
 
@@ -272,7 +313,7 @@
                 $('#seguir').css("display", "none");
                 $('#editmen').css("display", "");
                 $('#editmp').css("display", "");
-                $('#loadimg').css("display","");
+                $('#loadimg').css("display", "");
 
             } else {
                 if ($('#sigueu').text() == 1) {

@@ -118,7 +118,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="row s6 m4 l4"> 
+                <div class="row s6 m4 l4">
+                    <c:set var="libro" value="${sessionScope.libro}" scope="session" />
                     <a href="<%=request.getContextPath()%>/registrarCapitulo.htm" class="btn waves-effect" type="button" ><spring:message code="label.add" />
                         <i class="material-icons right">play_for_work</i>
                     </a>

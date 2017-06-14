@@ -82,6 +82,7 @@ public class ControladorPerfilLibro {
         model.addObject("foto", imagenAutor);
         model.addObject("capitulos", capitulos);
         model.addObject("perfil", String.valueOf(perfilUsuario));
+        ses.setAttribute("libro", perfil);
         return model;
     }
 

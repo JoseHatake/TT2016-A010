@@ -68,12 +68,6 @@
     </div>
 
     <form action="controladorNuevoLibro.htm" method="post" enctype="multipart/form-data" accept="image/jpg,image/png" id="formID" accept-charset="utf-8">
-        <div class="row">
-            <label>
-                <span class="checkbox">I accept terms of use : </span>
-                <input class="validate[required] checkbox" type="checkbox" id="agree" name="agree" style="margin-left: 40"/>
-            </label>
-        </div>
 
         <div class="row">
             <div class="col s5 m3 z-depth-1" style="margin-left: 1.5%; background: #eceff1;" >

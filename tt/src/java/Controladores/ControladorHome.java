@@ -47,6 +47,8 @@ public class ControladorHome {
             List<String> librosMasGustados = new ArrayList<>();
             
             List<String> idLibro = new ArrayList<>();
+            List<String> idLibro2 = new ArrayList<>();
+            List<String> idLibro3 = new ArrayList<>();
 
             String idioma = locale.getLanguage();
             System.out.println("**IDIOMA ** " + idioma);
@@ -60,6 +62,7 @@ public class ControladorHome {
                 if (img != null) {
                     imagenesRecientes.add(new String(img, "UTF-8"));
                     librosRecientes.add(actual.getNombre());
+                    idLibro.add(String.valueOf(actual.getIdLibro()));
                 }
                 System.out.println("---_RUTA " + actual.getPortada());
             }
@@ -69,6 +72,7 @@ public class ControladorHome {
                 if (img != null) {
                     imagenesRandom.add(new String(img, "UTF-8"));
                     librosRandom.add(actual.getNombre());
+                    idLibro2.add(String.valueOf(actual.getIdLibro()));
                 }
                 System.out.println("---_RUTA " + actual.getPortada());
             }
@@ -78,7 +82,7 @@ public class ControladorHome {
                 if (img != null) {
                     imagenesMasGustados.add(new String(img, "UTF-8"));
                     librosMasGustados.add(actual.getNombre());
-                    idLibro.add(String.valueOf(actual.getIdLibro()));
+                    idLibro3.add(String.valueOf(actual.getIdLibro()));
                 }
                 System.out.println("---_RUTA " + actual.getPortada());
             }
@@ -93,6 +97,8 @@ public class ControladorHome {
             myModel.put("listaTitulosMasGustados", librosMasGustados);
             
             myModel.put("idLibros", idLibro);
+            myModel.put("idLibros2", idLibro2);
+            myModel.put("idLibros3", idLibro3);
 
             // myModel.put("profesores", this.ProfesorManager.getProfesores());
             return new ModelAndView("home", "model", myModel);
