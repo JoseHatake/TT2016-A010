@@ -30,7 +30,6 @@
         <!-- JavaScript -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
-        <script type="text/javascript" src="<%=request.getContextPath()%>/js/deresSociales.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/peticionesAjax.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="js/materialize.js"></script>
@@ -67,20 +66,76 @@
             </div>
         </nav>
 
-        <div class="row col s6 m2 l2">
-            <h5 class="left-align">${libro.nombre}</h5>
-            <img class="responsive-img col s6 m2 l2" src="data:image/jpeg;base64,${portada}">
-            <div class="row col s6 m2 l2">
-                <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=143&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=126104161298033" width="143" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-
-                <!-- Inserta esta etiqueta donde quieras que aparezca BotÃ³n Compartir.
-                <div class="g-plus col s6 m2 l2" data-action="share" data-annotation="none" data-href="https://translate.google.com.mx"></div>
-                 Inserta esta etiqueta despuÃ©s de la Ãºltima etiqueta de compartir. -->
-
+        <div class="row col s6 m2 l15">
+            <div class="row col l3">
+                <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=143&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=126104161298033" width="143" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true">
+                    <div id="fb-root"></div>
+                </iframe>
+                <!-- Inserta esta etiqueta después de la última etiqueta de compartir. -->
+                <script type="text/javascript">
+                    window.___gcfg = {lang: 'es'};
+                    (function () {
+                        var po = document.createElement('script');
+                        po.type = 'text/javascript';
+                        po.async = true;
+                        po.src = 'https://apis.google.com/js/platform.js';
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(po, s);
+                    })();
+                </script>
                 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');</script>
+                <script type="text/javascript">
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id))
+                            return;
+                        js = d.createElement(s);
+                        s.id = id;
+                        js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=126104161298033";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                </script>
+                <!-- Inserta esta etiqueta donde quieras que aparezca Botón Compartir. -->
+                <div class="g-plus" data-action="share" data-annotation="none" data-href="https://translate.google.com.mx"></div>
+                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="30" data-numposts="2"></div>
             </div>
-
-            <table class="highlight row col s6 m2 l2">
+            <div class="col s6 m2 l6">
+                <div class="row s6 m2 l4">
+                    <h5 class="left-align">${libro.nombre}</h5>
+                    <img class="responsive-img col s6 m2 l5" src="data:image/jpeg;base64,${portada}">
+                    <div class="row col s6 m2 l7">
+                        <p>
+                            ${libro.descripcion}
+                        </p>
+                    </div>
+                </div>
+                <div class="row s6 m4 l4"> 
+                    <a href="<%=request.getContextPath()%>/registrarCapitulo.htm" class="btn waves-effect" type="button" ><spring:message code="label.add" />
+                        <i class="material-icons right">play_for_work</i>
+                    </a>
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <a href="<%=request.getContextPath()%>/pAutorL.htm?id=${autor.idUsuario}"><img src="data:image/jpeg;base64,${foto}" alt="" class="circle responsive-img"></a>
+                            <span class="title"></span>
+                            <p>Autor: ${autor.pseudonimo}
+                                <br>
+                                Mensaje de Perfil: ${autor.mensaje}
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons col s6 m2 l3">grade</i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <table class="highlight row col s6 m2 l3">
                 <thead>
                     <tr>
                         <th colspan='2'>
@@ -92,7 +147,7 @@
                     <c:forEach items="${capitulos}" var="capitulo" varStatus="loop">
                         <tr id="${capitulo.idCapitulo}">
                             <td>
-                                <a class="carousel-item" href="<%=request.getContextPath()%>/${capitulo.capitulo}" style="width: 35%; margin-top: -7%;">${capitulo.nombre}</a>                                      
+                                <a class="carousel-item" href="${capitulo.capitulo}" style="width: 35%; margin-top: -7%;">${capitulo.nombre}</a>                                      
                             </td>
                             <c:if test="${perfil == 1 or perfil == 2}">
                                 <td>
@@ -102,30 +157,7 @@
                         </tr>
                     </c:forEach>
                 </tbody>
-                <a href="<%=request.getContextPath()%>/registrarCapitulo.htm" class="btn waves-effect" type="button" ><spring:message code="label.add" />
-                    <i class="material-icons right">play_for_work</i>
-
-                </a>
             </table>
-
-        </div>
-
-        <div class="col s6 m4 l5"> 
-            <ul class="collection">
-                <li class="collection-item avatar">
-                    <a href="<%=request.getContextPath()%>/pAutorL.htm?id=${autor.idUsuario}"><img src="data:image/jpeg;base64,${foto}" alt="" class="circle responsive-img col s6 m2 l3"></a>
-                    <span class="title"></span>
-                    <p>Autor: ${autor.pseudonimo}
-                        <br>
-                        Mensaje de Perfil: ${autor.mensaje}
-                    </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons col s6 m2 l3">grade</i></a>
-                </li>
-            </ul>
-        </div>
-        <a href="#!" class="btn" onclick="Materialize.showStaggeredList('#staggered-test')">Click Me</a>
-        <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="3">
-            <!-- Comentarios de Facebook -->
         </div>
     </form:form>
 

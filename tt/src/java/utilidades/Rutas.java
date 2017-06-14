@@ -10,6 +10,6 @@ package utilidades;
  * @author yosgs
  */
 public class Rutas {
-    public static String rutaArchivos ="F:\\prueba\\";
-    
+    //public static String rutaArchivos ="F:\\prueba\\";
+    public static String rutaArchivos ="/Users/hatake/Downloads/prueba/";//MacBoock Miguel
 }

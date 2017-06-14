@@ -11,9 +11,17 @@ import DAO.LibroDAO;
 import Modelos.Capitulo;
 import Modelos.Cuenta;
 import Modelos.Libro;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import utilidades.GuardarArchivo;
+import utilidades.Rutas;
 
 /**
  *
@@ -29,8 +38,9 @@ import utilidades.GuardarArchivo;
 @Controller
 @RequestMapping("/perfildelibro")
 public class ControladorPerfilLibro {
+
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView cargaPerfilLibro(@RequestParam("idLibro") int idLibro, HttpSession ses) throws UnsupportedEncodingException{
+    public ModelAndView cargaPerfilLibro(@RequestParam("idLibro") int idLibro, HttpSession ses, HttpServletRequest request) throws UnsupportedEncodingException, IOException {
         SesionUsuario su = (SesionUsuario) ses.getAttribute("use");
         Integer perfilUsuario;
         ModelAndView model;
@@ -42,32 +52,74 @@ public class ControladorPerfilLibro {
         CapituloDAO capituloDao = new CapituloDAO();
         byte[] img = null;
         String imagenPortada, imagenAutor;
-        
+        ArrayList<String> cap = new ArrayList<>();
+
         model = new ModelAndView("perfildelibro");
         perfil = consultorLibro.obtenLibro(idLibro);
         cuenta = cuentaDao.obtenCuenta(perfil.getUsuario_idUsuario());
-        
+
         img = GuardarArchivo.leerImagenes(perfil.getPortada());
         imagenPortada = new String(img, "UTF-8");
-        
+
         img = GuardarArchivo.leerImagenes(cuenta.getFoto());
         imagenAutor = new String(img, "UTF-8");
-        
+
+        String url = request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+        url = request.getServletContext().getRealPath("/");
         capitulos = capituloDao.obtenCapitulosLibro(idLibro);
-        
-        if (su.IsAdmin)
+        copiarArchivoGeneraRuta(capitulos, url);
+
+        if (su.IsAdmin) {
             perfilUsuario = 1;
-        else if(su.getId() != 0)
+        } else if (su.getId() != 0) {
             perfilUsuario = 2;
-        else
+        } else {
             perfilUsuario = 0;
-        
-        model.addObject("libro",perfil);
-        model.addObject("autor",cuenta);
-        model.addObject("portada",imagenPortada);
-        model.addObject("foto",imagenAutor);
+        }
+
+        model.addObject("libro", perfil);
+        model.addObject("autor", cuenta);
+        model.addObject("portada", imagenPortada);
+        model.addObject("foto", imagenAutor);
         model.addObject("capitulos", capitulos);
         model.addObject("perfil", String.valueOf(perfilUsuario));
         return model;
+    }
+
+    public void copiarArchivoGeneraRuta(List<Capitulo> capitulos, String url) throws FileNotFoundException, IOException {
+        File fileIn = null;
+        File fileOut = null;
+        InputStream in = null;
+        OutputStream out = null;
+        String nombrePDF = null;
+        byte[] buf = new byte[1024];
+        int len;
+        String[] carpetas = null;
+        String archivoOrigen = null;
+        String archvioDestino = null;
+
+        carpetas = capitulos.get(0).getCapitulo().split("/");
+        
+        fileIn = new File(url);//Crea el direcotrio temporal
+        fileIn.mkdirs();//Crea el directorio temporal
+
+        Rutas ruta = null;
+        for (Capitulo capitulo : capitulos) {
+            nombrePDF = capitulo.getCapitulo();
+            archivoOrigen = ruta.rutaArchivos + nombrePDF;
+            archvioDestino = url + nombrePDF;
+            
+            fileIn = new File(archivoOrigen);
+            fileOut = new File(archvioDestino);
+            
+            in = new FileInputStream(fileIn);
+            out = new FileOutputStream(fileOut);
+            
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+        }
+        in.close();
+        out.close();
     }
 }
